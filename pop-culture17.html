@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Culture & Entertainment Riddles 🎭🎶</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff4500;
+        }
+        .riddle {
+            font-size: 18px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background: #ff4500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #d13a00;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🎭🎶 Pop Culture & Entertainment Riddles 🔥</h1>
+
+        <div class="riddle">
+            <p>1. I wear a mask, fight crime at night, and have a bat for a symbol. Who am I?</p>
+            <input type="text" id="r1" placeholder="Your answer">
+        </div>
+
+        <div class="riddle">
+            <p>2. I am blue, fast, and collect rings. Who am I?</p>
+            <input type="text" id="r2" placeholder="Your answer">
+        </div>
+
+        <div class="riddle">
+            <p>3. I am a wizard with glasses and a lightning scar. Who am I?</p>
+            <input type="text" id="r3" placeholder="Your answer">
+        </div>
+
+        <div class="riddle">
+            <p>4. I snap my fingers and half the universe disappears. Who am I?</p>
+            <input type="text" id="r4" placeholder="Your answer">
+        </div>
+
+        <div class="riddle">
+            <p>5. I live in a pineapple under the sea. Who am I?</p>
+            <input type="text" id="r5" placeholder="Your answer">
+        </div>
+
+        <button class="btn" onclick="checkRiddles()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkRiddles() {
+            let score = 0;
+            let answers = {
+                r1: "batman",
+                r2: "sonic",
+                r3: "harry potter",
+                r4: "thanos",
+                r5: "spongebob"
+            };
+
+            let userAnswers = {
+                r1: document.getElementById('r1').value.toLowerCase().trim(),
+                r2: document.getElementById('r2').value.toLowerCase().trim(),
+                r3: document.getElementById('r3').value.toLowerCase().trim(),
+                r4: document.getElementById('r4').value.toLowerCase().trim(),
+                r5: document.getElementById('r5').value.toLowerCase().trim()
+            };
+
+            Object.keys(answers).forEach(q => {
+                if (userAnswers[q] === answers[q]) {
+                    score++;
+                }
+            });
+
+            document.getElementById("result").innerText = `You got ${score}/5 correct! 🎉`;
+        }
+    </script>
+
+</body>
+</html>

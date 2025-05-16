@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Riddles Quiz 🧠</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #0073e6;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .options label {
+            display: block;
+            margin: 5px;
+            padding: 10px;
+            background: #cceeff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .options label:hover {
+            background: #66ccff;
+        }
+        .btn {
+            background: #0073e6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #005bb5;
+        }
+        #result {
+            font-size: 20px;
+            color: #ff3300;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🧠 English Riddles Quiz 🧠</h1>
+        
+        <div id="quiz">
+            <div class="question">
+                <p>1. I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"> A) A shadow</label>
+                    <label><input type="radio" name="q1" value="B"> B) An echo</label>
+                    <label><input type="radio" name="q1" value="C"> C) A dream</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. The more you take, the more you leave behind. What am I?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"> A) Footsteps</label>
+                    <label><input type="radio" name="q2" value="B"> B) A hole</label>
+                    <label><input type="radio" name="q2" value="C"> C) A puzzle</label>
+                </div>
+            </div>
+
+            <button class="btn" onclick="checkAnswers()">Submit</button>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "B",
+                q2: "A"
+            };
+
+            let userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked'),
+                q2: document.querySelector('input[name="q2"]:checked')
+            };
+
+            if (userAnswers.q1 && userAnswers.q1.value === answers.q1) score++;
+            if (userAnswers.q2 && userAnswers.q2.value === answers.q2) score++;
+
+            document.getElementById('result').innerText = `You got ${score}/2 correct! 🏆`;
+        }
+    </script>
+
+</body>
+</html>

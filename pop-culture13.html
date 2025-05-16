@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science & Technology Quiz 🚀</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #007bff;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .options {
+            text-align: left;
+        }
+        .option {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🚀 Science & Technology Quiz 🔬</h1>
+
+        <div class="question">
+            <p>1. What is the chemical symbol for gold?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="A"> A) Go</label>
+                <label class="option"><input type="radio" name="q1" value="B"> B) Au</label>
+                <label class="option"><input type="radio" name="q1" value="C"> C) Ag</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. Who is known as the father of the computer?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="A"> A) Alan Turing</label>
+                <label class="option"><input type="radio" name="q2" value="B"> B) Charles Babbage</label>
+                <label class="option"><input type="radio" name="q2" value="C"> C) Bill Gates</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. What planet is known as the Red Planet?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="A"> A) Venus</label>
+                <label class="option"><input type="radio" name="q3" value="B"> B) Mars</label>
+                <label class="option"><input type="radio" name="q3" value="C"> C) Jupiter</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. What does HTTP stand for?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="A"> A) Hyper Text Transfer Protocol</label>
+                <label class="option"><input type="radio" name="q4" value="B"> B) High Tech Transfer Process</label>
+                <label class="option"><input type="radio" name="q4" value="C"> C) Hyperlink Transfer Program</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. What is the powerhouse of the cell?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="A"> A) Nucleus</label>
+                <label class="option"><input type="radio" name="q5" value="B"> B) Mitochondria</label>
+                <label class="option"><input type="radio" name="q5" value="C"> C) Ribosome</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>6. What is the speed of light?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q6" value="A"> A) 300,000 km/s</label>
+                <label class="option"><input type="radio" name="q6" value="B"> B) 150,000 km/s</label>
+                <label class="option"><input type="radio" name="q6" value="C"> C) 3,000 km/s</label>
+            </div>
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "B",  // Au (Gold)
+                q2: "B",  // Charles Babbage
+                q3: "B",  // Mars
+                q4: "A",  // Hyper Text Transfer Protocol
+                q5: "B",  // Mitochondria
+                q6: "A"   // 300,000 km/s
+            };
+
+            let userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked'),
+                q2: document.querySelector('input[name="q2"]:checked'),
+                q3: document.querySelector('input[name="q3"]:checked'),
+                q4: document.querySelector('input[name="q4"]:checked'),
+                q5: document.querySelector('input[name="q5"]:checked'),
+                q6: document.querySelector('input[name="q6"]:checked')
+            };
+
+            Object.keys(answers).forEach(q => {
+                if (userAnswers[q] && userAnswers[q].value === answers[q]) {
+                    score++;
+                }
+            });
+
+            document.getElementById("result").innerText = `You scored ${score}/6! 🚀`;
+        }
+    </script>
+
+</body>
+</html>

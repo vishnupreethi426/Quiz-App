@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot the Difference Game 🔍</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #0073e6;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        .image-container {
+            position: relative;
+            margin: 10px;
+        }
+        .game-image {
+            width: 400px;
+            height: auto;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        .spot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            display: none;
+            opacity: 0.7;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔍 Spot the Difference Game 🔍</h1>
+    <p>Click on the differences in the second image.</p>
+
+    <div class="game-container">
+        <div class="image-container">
+            <img src="image1.jpg" class="game-image" alt="Original Image">
+        </div>
+        <div class="image-container" id="game-area">
+            <img src="image2.jpg" class="game-image" alt="Modified Image">
+          
+            <div class="spot" style="top: 50px; left: 100px;"></div>
+            <div class="spot" style="top: 150px; left: 200px;"></div>
+            <div class="spot" style="top: 250px; left: 300px;"></div>
+        </div>
+    </div>
+
+    <p id="result"></p>
+
+    <script>
+        let foundDifferences = 0;
+        let totalDifferences = 3;
+        let spots = document.querySelectorAll('.spot');
+
+        spots.forEach(spot => {
+            spot.addEventListener('click', function () {
+                if (spot.style.display === "none") {
+                    spot.style.display = "block";
+                    foundDifferences++;
+
+                    if (foundDifferences === totalDifferences) {
+                        document.getElementById('result').innerText = "🎉 You found all differences! 🎉";
+                    }
+                }
+            });
+        });
+
+        document.getElementById('game-area').addEventListener('click', function (e) {
+            if (!e.target.classList.contains('spot')) {
+                alert("Try again! Not a difference.");
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Logic Puzzle 🧠</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .puzzle-container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .input-field {
+            width: 50px;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .btn {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #cc5200;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="puzzle-container">
+        <h1>🧠 Math Logic Puzzle 🔢</h1>
+
+        <div class="question">
+            <p>1. If 2 + 3 = 8, 3 + 7 = 27, 4 + 5 = 32, then 5 + 8 = ?</p>
+            <input type="text" id="q1" class="input-field">
+        </div>
+
+        <div class="question">
+            <p>2. A clock shows 3:15. What is the angle between the hour and the minute hand?</p>
+            <input type="text" id="q2" class="input-field">
+        </div>
+
+        <div class="question">
+            <p>3. Fill in the blank: 1, 4, 9, 16, 25, __, 49</p>
+            <input type="text" id="q3" class="input-field">
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "65",  // Logic: (A + B) * B = Result → (5 + 8) * 5 = 65
+                q2: "7.5", // Formula: |(30*H - 5.5*M)| → |(30*3 - 5.5*15)| = 7.5°
+                q3: "36"   // Square numbers: 1², 2², 3², 4², 5², 6², 7² → 6² = 36
+            };
+
+            let userAnswers = {
+                q1: document.getElementById("q1").value.trim(),
+                q2: document.getElementById("q2").value.trim(),
+                q3: document.getElementById("q3").value.trim()
+            };
+
+            if (userAnswers.q1 === answers.q1) score++;
+            if (userAnswers.q2 === answers.q2) score++;
+            if (userAnswers.q3 === answers.q3) score++;
+
+            document.getElementById("result").innerText = `You got ${score}/3 correct! 🎉`;
+        }
+    </script>
+
+</body>
+</html>

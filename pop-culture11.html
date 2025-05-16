@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Jigsaw Puzzle 🔬</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .puzzle-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            cursor: grab;
+            border: 2px solid #000;
+        }
+        .drop-zone {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 2px dashed #000;
+        }
+        .completed {
+            background: #90EE90;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔬 Science Jigsaw Puzzle 🧩</h1>
+    <p>Drag and drop the puzzle pieces to complete the science image!</p>
+
+    <div class="puzzle-container" id="puzzleBoard">
+        <!-- Drop zones -->
+        <div class="drop-zone" data-id="1"></div>
+        <div class="drop-zone" data-id="2"></div>
+        <div class="drop-zone" data-id="3"></div>
+        <div class="drop-zone" data-id="4"></div>
+    </div>
+
+    <div class="puzzle-container" id="piecesContainer">
+        <!-- Puzzle pieces (randomized) -->
+        <img src="science1.png" class="puzzle-piece" id="piece1" draggable="true" data-id="1">
+        <img src="science2.png" class="puzzle-piece" id="piece2" draggable="true" data-id="2">
+        <img src="science3.png" class="puzzle-piece" id="piece3" draggable="true" data-id="3">
+        <img src="science4.png" class="puzzle-piece" id="piece4" draggable="true" data-id="4">
+    </div>
+
+    <p class="completed" id="completionMessage">🎉 Puzzle Completed! 🎉</p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let pieces = document.querySelectorAll(".puzzle-piece");
+            let dropZones = document.querySelectorAll(".drop-zone");
+
+            pieces.forEach(piece => {
+                piece.addEventListener("dragstart", dragStart);
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener("dragover", dragOver);
+                zone.addEventListener("drop", drop);
+            });
+
+            function dragStart(event) {
+                event.dataTransfer.setData("text", event.target.dataset.id);
+                event.target.style.opacity = "0.5";
+            }
+
+            function dragOver(event) {
+                event.preventDefault();
+            }
+
+            function drop(event) {
+                event.preventDefault();
+                let pieceId = event.dataTransfer.getData("text");
+                let draggedPiece = document.querySelector(`[data-id='${pieceId}']`);
+
+                if (event.target.dataset.id === pieceId) {
+                    event.target.appendChild(draggedPiece);
+                    draggedPiece.style.opacity = "1";
+                    draggedPiece.draggable = false;
+                    checkCompletion();
+                }
+            }
+
+            function checkCompletion() {
+                let filled = document.querySelectorAll(".drop-zone img").length;
+                if (filled === 4) {
+                    document.getElementById("completionMessage").style.display = "block";
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

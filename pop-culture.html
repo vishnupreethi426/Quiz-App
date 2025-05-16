@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Knowledge Quiz</title>
+ 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: orchid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    .quiz-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+    }
+    
+    h1 {
+        color: #333;
+    }
+    
+    .quiz-question {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    
+    label {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    #result {
+        font-size: 18px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>General Knowledge Quiz</h1>
+        <div id="quiz">
+            <div class="quiz-question">
+                <h3>1. What is the capital of France?</h3>
+                <label><input type="radio" name="q1" value="A"> A) London</label>
+                <label><input type="radio" name="q1" value="B"> B) Paris</label>
+                <label><input type="radio" name="q1" value="C"> C) Rome</label>
+                <label><input type="radio" name="q1" value="D"> D) Berlin</label>
+            </div>
+
+            <div class="quiz-question">
+                <h3>2. Which planet is known as the Red Planet?</h3>
+                <label><input type="radio" name="q2" value="A"> A) Venus</label>
+                <label><input type="radio" name="q2" value="B"> B) Mars</label>
+                <label><input type="radio" name="q2" value="C"> C) Jupiter</label>
+                <label><input type="radio" name="q2" value="D"> D) Saturn</label>
+            </div>
+
+            <div class="quiz-question">
+                <h3>3. Who wrote the play 'Romeo and Juliet'?</h3>
+                <label><input type="radio" name="q3" value="A"> A) Charles Dickens</label>
+                <label><input type="radio" name="q3" value="B"> B) William Shakespeare</label>
+                <label><input type="radio" name="q3" value="C"> C) Jane Austen</label>
+                <label><input type="radio" name="q3" value="D"> D) Mark Twain</label>
+            </div>
+
+            <button onclick="submitQuiz()">Submit Quiz</button>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            let answers = {
+                q1: "B",
+                q2: "B",
+                q3: "B"
+            };
+
+            for (let key in answers) {
+                let selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === answers[key]) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").innerText = `Your score: ${score}/3`;
+        }
+    </script>
+
+</body>
+</html>

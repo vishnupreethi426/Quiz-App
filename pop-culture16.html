@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Quiz 🎭🎶</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #007bff;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .options {
+            text-align: left;
+        }
+        .option {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🎭🎶 Entertainment Quiz 🌟</h1>
+
+        <div class="question">
+            <p>1. Which movie won the Oscar for Best Picture in 2023?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="A"> A) Everything Everywhere All at Once</label>
+                <label class="option"><input type="radio" name="q1" value="B"> B) Top Gun: Maverick</label>
+                <label class="option"><input type="radio" name="q1" value="C"> C) Avatar: The Way of Water</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. Who is known as the "King of Pop"?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="A"> A) Elvis Presley</label>
+                <label class="option"><input type="radio" name="q2" value="B"> B) Michael Jackson</label>
+                <label class="option"><input type="radio" name="q2" value="C"> C) Prince</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. Which TV series features a group of friends hanging out at "Central Perk"?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="A"> A) Friends</label>
+                <label class="option"><input type="radio" name="q3" value="B"> B) How I Met Your Mother</label>
+                <label class="option"><input type="radio" name="q3" value="C"> C) The Big Bang Theory</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. Which artist released the hit song "Blinding Lights"?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="A"> A) The Weeknd</label>
+                <label class="option"><input type="radio" name="q4" value="B"> B) Drake</label>
+                <label class="option"><input type="radio" name="q4" value="C"> C) Billie Eilish</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. What is the longest-running animated TV show?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="A"> A) Family Guy</label>
+                <label class="option"><input type="radio" name="q5" value="B"> B) The Simpsons</label>
+                <label class="option"><input type="radio" name="q5" value="C"> C) South Park</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>6. Who played the role of Jack Dawson in the movie Titanic?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q6" value="A"> A) Leonardo DiCaprio</label>
+                <label class="option"><input type="radio" name="q6" value="B"> B) Brad Pitt</label>
+                <label class="option"><input type="radio" name="q6" value="C"> C) Tom Cruise</label>
+            </div>
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "A",  // Everything Everywhere All at Once
+                q2: "B",  // Michael Jackson
+                q3: "A",  // Friends
+                q4: "A",  // The Weeknd
+                q5: "B",  // The Simpsons
+                q6: "A"   // Leonardo DiCaprio
+            };
+
+            let userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked'),
+                q2: document.querySelector('input[name="q2"]:checked'),
+                q3: document.querySelector('input[name="q3"]:checked'),
+                q4: document.querySelector('input[name="q4"]:checked'),
+                q5: document.querySelector('input[name="q5"]:checked'),
+                q6: document.querySelector('input[name="q6"]:checked')
+            };
+
+            Object.keys(answers).forEach(q => {
+                if (userAnswers[q] && userAnswers[q].value === answers[q]) {
+                    score++;
+                }
+            });
+
+            document.getElementById("result").innerText = `You scored ${score}/6! 🎉`;
+        }
+    </script>
+
+</body>
+</html>

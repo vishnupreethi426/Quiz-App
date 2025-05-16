@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Quiz 🧪</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .options {
+            text-align: left;
+        }
+        .option {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #cc5200;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🔬 Science Quiz 🧪</h1>
+
+        <div class="question">
+            <p>1. What is the chemical symbol for water?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="A"> A) O<sub>2</sub></label>
+                <label class="option"><input type="radio" name="q1" value="B"> B) H<sub>2</sub>O</label>
+                <label class="option"><input type="radio" name="q1" value="C"> C) CO<sub>2</sub></label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. What planet is known as the Red Planet?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="A"> A) Venus</label>
+                <label class="option"><input type="radio" name="q2" value="B"> B) Mars</label>
+                <label class="option"><input type="radio" name="q2" value="C"> C) Jupiter</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. What is the boiling point of water at sea level?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="A"> A) 100°C</label>
+                <label class="option"><input type="radio" name="q3" value="B"> B) 50°C</label>
+                <label class="option"><input type="radio" name="q3" value="C"> C) 212°C</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. Which gas do plants absorb from the atmosphere?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="A"> A) Oxygen</label>
+                <label class="option"><input type="radio" name="q4" value="B"> B) Carbon Dioxide</label>
+                <label class="option"><input type="radio" name="q4" value="C"> C) Nitrogen</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. What is the hardest natural substance on Earth?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="A"> A) Iron</label>
+                <label class="option"><input type="radio" name="q5" value="B"> B) Diamond</label>
+                <label class="option"><input type="radio" name="q5" value="C"> C) Quartz</label>
+            </div>
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "B",  // H2O
+                q2: "B",  // Mars
+                q3: "A",  // 100°C
+                q4: "B",  // Carbon Dioxide
+                q5: "B"   // Diamond
+            };
+
+            let userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked'),
+                q2: document.querySelector('input[name="q2"]:checked'),
+                q3: document.querySelector('input[name="q3"]:checked'),
+                q4: document.querySelector('input[name="q4"]:checked'),
+                q5: document.querySelector('input[name="q5"]:checked')
+            };
+
+            Object.keys(answers).forEach(q => {
+                if (userAnswers[q] && userAnswers[q].value === answers[q]) {
+                    score++;
+                }
+            });
+
+            document.getElementById("result").innerText = `You scored ${score}/5! 🎉`;
+        }
+    </script>
+
+</body>
+</html>

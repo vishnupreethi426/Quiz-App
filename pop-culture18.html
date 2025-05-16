@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Trivia 🎃👻</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 700px;
+            background: #292929;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(255, 140, 0, 0.5);
+        }
+        h1 {
+            color: #ff7518;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .options {
+            text-align: left;
+        }
+        .option {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            background: #ff7518;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #cc5c14;
+        }
+        #result {
+            font-size: 20px;
+            color: #32cd32;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🎃👻 Halloween Trivia 🎭🦇</h1>
+
+        <div class="question">
+            <p>1. What is the name of the famous haunted house in "The Amityville Horror"?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="A"> A) The Warren House</label>
+                <label class="option"><input type="radio" name="q1" value="B"> B) The Amityville House</label>
+                <label class="option"><input type="radio" name="q1" value="C"> C) The Winchester House</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. What do people traditionally carve on Halloween?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="A"> A) Apples</label>
+                <label class="option"><input type="radio" name="q2" value="B"> B) Pumpkins</label>
+                <label class="option"><input type="radio" name="q2" value="C"> C) Watermelons</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. What was the original name for Halloween?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="A"> A) All Hallows' Eve</label>
+                <label class="option"><input type="radio" name="q3" value="B"> B) Samhain Night</label>
+                <label class="option"><input type="radio" name="q3" value="C"> C) Spooky Festival</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. What classic horror movie features a killer named Michael Myers?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="A"> A) Friday the 13th</label>
+                <label class="option"><input type="radio" name="q4" value="B"> B) Halloween</label>
+                <label class="option"><input type="radio" name="q4" value="C"> C) The Exorcist</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. What is the most popular Halloween candy in the U.S.?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="A"> A) Snickers</label>
+                <label class="option"><input type="radio" name="q5" value="B"> B) Reese's Peanut Butter Cups</label>
+                <label class="option"><input type="radio" name="q5" value="C"> C) Candy Corn</label>
+            </div>
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "B",  // The Amityville House
+                q2: "B",  // Pumpkins
+                q3: "A",  // All Hallows' Eve
+                q4: "B",  // Halloween
+                q5: "B"   // Reese's Peanut Butter Cups
+            };
+
+            let userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked'),
+                q2: document.querySelector('input[name="q2"]:checked'),
+                q3: document.querySelector('input[name="q3"]:checked'),
+                q4: document.querySelector('input[name="q4"]:checked'),
+                q5: document.querySelector('input[name="q5"]:checked')
+            };
+
+            Object.keys(answers).forEach(q => {
+                if (userAnswers[q] && userAnswers[q].value === answers[q]) {
+                    score++;
+                }
+            });
+
+            document.getElementById("result").innerText = `You scored ${score}/5! 🎃👻`;
+        }
+    </script>
+
+</body>
+</html>

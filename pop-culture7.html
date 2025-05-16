@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game 🧩</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .sudoku-container {
+            display: inline-block;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        .sudoku-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 40px);
+            grid-template-rows: repeat(9, 40px);
+            gap: 2px;
+            margin: 20px auto;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            border: 1px solid black;
+            outline: none;
+            background: white;
+        }
+        .cell:focus {
+            background-color: #ffeb99;
+        }
+        .fixed {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+        .btn {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #cc5200;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🧩 Sudoku Game 🧩</h1>
+    <p>Fill in the missing numbers correctly!</p>
+
+    <div class="sudoku-container">
+        <div id="sudoku-grid" class="sudoku-grid"></div>
+        <button class="btn" onclick="checkSudoku()">Check Solution</button>
+        <button class="btn" onclick="resetGame()">Reset</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let puzzle = [
+            [5, 3, '', '', 7, '', '', '', ''],
+            [6, '', '', 1, 9, 5, '', '', ''],
+            ['', 9, 8, '', '', '', '', 6, ''],
+            [8, '', '', '', 6, '', '', '', 3],
+            [4, '', '', 8, '', 3, '', '', 1],
+            [7, '', '', '', 2, '', '', '', 6],
+            ['', 6, '', '', '', '', 2, 8, ''],
+            ['', '', '', 4, 1, 9, '', '', 5],
+            ['', '', '', '', 8, '', '', 7, 9]
+        ];
+
+        function createSudokuGrid() {
+            let grid = document.getElementById("sudoku-grid");
+            grid.innerHTML = '';
+
+            for (let row = 0; row < 9; row++) {
+                for (let col = 0; col < 9; col++) {
+                    let input = document.createElement("input");
+                    input.type = "text";
+                    input.className = "cell";
+                    input.dataset.row = row;
+                    input.dataset.col = col;
+
+                    if (puzzle[row][col] !== '') {
+                        input.value = puzzle[row][col];
+                        input.readOnly = true;
+                        input.classList.add("fixed");
+                    }
+
+                    grid.appendChild(input);
+                }
+            }
+        }
+
+        function checkSudoku() {
+            let cells = document.querySelectorAll(".cell");
+            let correct = true;
+
+            cells.forEach(cell => {
+                let row = cell.dataset.row;
+                let col = cell.dataset.col;
+                let value = cell.value;
+
+                if (value === '') {
+                    correct = false;
+                }
+            });
+
+            document.getElementById("result").innerText = correct ? "✅ Well done! You solved it!" : "❌ Some numbers are missing!";
+        }
+
+        function resetGame() {
+            createSudokuGrid();
+            document.getElementById("result").innerText = "";
+        }
+
+        createSudokuGrid();
+    </script>
+
+</body>
+</html>

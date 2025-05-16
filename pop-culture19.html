@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Culture Fill in the Blanks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .answer-input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        #score {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pop Culture Fill in the Blanks</h1>
+        <p class="question">"The Marvel superhero with a hammer is _____."</p>
+        <input type="text" class="answer-input" id="q1" placeholder="Your Answer">
+        <br>
+        <p class="question">"The TV show about dragons and thrones is called _____."</p>
+        <input type="text" class="answer-input" id="q2" placeholder="Your Answer">
+        <br>
+        <p class="question">"The wizarding world was created by author J.K. _____."</p>
+        <input type="text" class="answer-input" id="q3" placeholder="Your Answer">
+        <br>
+        <p class="question">"The main character in 'Breaking Bad' is Walter _____."</p>
+        <input type="text" class="answer-input" id="q4" placeholder="Your Answer">
+        <br>
+        <p class="question">"The Disney movie featuring a princess with long magical hair is called _____."</p>
+        <input type="text" class="answer-input" id="q5" placeholder="Your Answer">
+        <br>
+        <button class="submit-btn" onclick="checkAnswers()">Submit Answers</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let correctAnswers = ["Thor", "Game of Thrones", "Rowling", "White", "Tangled"];
+            let score = 0;
+            let userAnswers = [
+                document.getElementById("q1").value.trim(),
+                document.getElementById("q2").value.trim(),
+                document.getElementById("q3").value.trim(),
+                document.getElementById("q4").value.trim(),
+                document.getElementById("q5").value.trim()
+            ];
+            
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (userAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+                    score++;
+                }
+            }
+            
+            document.getElementById("score").innerText = "Your score: " + score + "/5";
+        }
+    </script>
+</body>
+</html>

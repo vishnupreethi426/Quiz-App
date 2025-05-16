@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Culture Quiz 🎬🎵</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .quiz-container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff4500;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .options {
+            text-align: left;
+        }
+        .option {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            background: #ff4500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #cc3700;
+        }
+        #result {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🎬🎵 Pop Culture Quiz 🌟</h1>
+
+        <div class="question">
+            <p>1. Who played Iron Man in the Marvel Cinematic Universe?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="A"> A) Chris Evans</label>
+                <label class="option"><input type="radio" name="q1" value="B"> B) Robert Downey Jr.</label>
+                <label class="option"><input type="radio" name="q1" value="C"> C) Tom Holland</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. Which artist released the album "1989"?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="A"> A) Taylor Swift</label>
+                <label class="option"><input type="radio" name="q2" value="B"> B) Billie Eilish</label>
+                <label class="option"><input type="radio" name="q2" value="C"> C) Ed Sheeran</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. What is the name of the coffee shop in the TV show "Friends"?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="A"> A) Java Hut</label>
+                <label class="option"><input type="radio" name="q3" value="B"> B) Central Perk</label>
+                <label class="option"><input type="radio" name="q3" value="C"> C) Coffee Central</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. Which social media platform is known for short videos and challenges?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="A"> A) Twitter</label>
+                <label class="option"><input type="radio" name="q4" value="B"> B) TikTok</label>
+                <label class="option"><input type="radio" name="q4" value="C"> C) Facebook</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. Who won the Academy Award for Best Actor in 2023?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="A"> A) Austin Butler</label>
+                <label class="option"><input type="radio" name="q5" value="B"> B) Brendan Fraser</label>
+                <label class="option"><input type="radio" name="q5" value="C"> C) Colin Farrell</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>6. What is the highest-grossing movie of all time?</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q6" value="A"> A) Titanic</label>
+                <label class="option"><input type="radio" name="q6" value="B"> B) Avatar</label>
+                <label class="option"><input type="radio" name="q6" value="C"> C) Avengers: Endgame</label>
+            </div>
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = {
+                q1: "B",  // Robert Downey Jr.
+                q2: "A",  // Taylor Swift
+                q3: "B",  // Central Perk
+                q4: "B",  // TikTok
+                q5: "B",  // Brendan Fraser
+                q6: "B"   // Avatar
+            };
+
+            let userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked'),
+                q2: document.querySelector('input[name="q2"]:checked'),
+                q3: document.querySelector('input[name="q3"]:checked'),
+                q4: document.querySelector('input[name="q4"]:checked'),
+                q5: document.querySelector('input[name="q5"]:checked'),
+                q6: document.querySelector('input[name="q6"]:checked')
+            };
+
+            Object.keys(answers).forEach(q => {
+                if (userAnswers[q] && userAnswers[q].value === answers[q]) {
+                    score++;
+                }
+            });
+
+            document.getElementById("result").innerText = `You scored ${score}/6! 🎉`;
+        }
+    </script>
+
+</body>
+</html>
